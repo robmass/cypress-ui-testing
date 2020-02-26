@@ -1,6 +1,9 @@
 import { CodeSurfer } from "code-surfer";
 import { vsDark } from "@code-surfer/themes";
 import { images } from "./images";
+import { themes } from 'mdx-deck'
+
+export const theme = themes.future
 
 # E2E & Frontend Testing Strategies
 
@@ -160,6 +163,19 @@ https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html
 <img src={images.pyramid2} style={{ height: "70vh" }} />
 
 https://kentcdodds.com/blog/write-tests
+
+---
+
+## Other test types
+
+- Smoke tests
+- Visual regression tests ([Percy](https://percy.io/), [Applitools](https://applitools.com/))
+- Load tests
+- Penetration tests
+- Contract testing
+- Mutation tests ([Stryker](https://stryker-mutator.io/))
+- Property based tests ([Fast-check](https://github.com/dubzzz/fast-check))
+- ...
 
 ---
 
