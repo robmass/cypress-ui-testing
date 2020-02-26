@@ -1,6 +1,6 @@
-import { highlight } from '@mdx-deck/themes';
-
-export const theme = highlight;
+import { CodeSurfer } from "code-surfer";
+import { vsDark } from "@code-surfer/themes";
+import { images } from "./images";
 
 # E2E & Frontend Testing Strategies
 
@@ -30,13 +30,9 @@ export const theme = highlight;
 
 ## Why aren't we testing our code?
 
-<Steps>
-
 > “Unit testing is a lot like going to the gym”
 
 – [A random guy on Stackoverflow](https://stackoverflow.com/a/69263/9891450)
-
-</Steps>
 
 --- 
 
@@ -93,94 +89,36 @@ What is a unit?! 🤔
 
 ---
 
-```ts
-// icon-selector.component.ts
+<CodeSurfer theme={vsDark}>
 
-@Component({
-  selector: 'app-icon-selector',
-  templateUrl: './icon-selector.component.html',
-  styleUrls: ['./icon-selector.component.sass']
-})
-export class IconSelectorComponent implements OnInit {
-  @Input() currentIcon = '';
-
-  icons = assetIcons;
-
-  constructor(public activeModal: NgbActiveModal) {}
-
-  ngOnInit() {}
-
-  toggleSelected(icon: string) {
-    this.currentIcon = icon;
-  }
-
-  close() {
-    this.activeModal.close(this.currentIcon);
-  }
-}
+```ts file=./code/icon-selector.component.ts
 ```
+
+</CodeSurfer>
 
 ---
 
-```ts
-// icon-selector.component.spec.ts
+<CodeSurfer theme={vsDark}>
 
-describe('IconSelectorComponent', () => {
-  let component: IconSelectorComponent;
-  let fixture: ComponentFixture<IconSelectorComponent>;
-  let activeModalService: jasmine.SpyObj<NgbActiveModal>;
-  let page: Page;
-
-  beforeEach(async(() => {
-    activeModalService = jasmine.createSpyObj<NgbActiveModal>([
-      'close',
-      'dismiss'
-    ]);
-
-    TestBed.configureTestingModule({
-      imports: [TranslateTestingModule],
-      declarations: [IconSelectorComponent, SvgIconComponent],
-      providers: [{ provide: NgbActiveModal, useValue: activeModalService }]
-    }).compileComponents();
-  }));
-
-  beforeEach(() => {
-    fixture = TestBed.createComponent(IconSelectorComponent);
-    component = fixture.componentInstance;
-    page = new Page(fixture);
-  });
-
-  // ...
-
+```ts file=./code/icon-selector.component.spec.ts
 ```
 
----
-
-```ts
-  // ...
-
-  it('should call dismiss on cancel button click', () => {
-    component.currentIcon = 'foo';
-    fixture.detectChanges();
-    page.cancelBtn.click();
-    expect(activeModalService.dismiss).toHaveBeenCalled();
-  });
-
-  it('should close modal with selected icon on close', () => {
-    component.currentIcon = 'foo';
-    fixture.detectChanges();
-
-    const bottleIconBtn = page.getIconBtn('bottle');
-    bottleIconBtn!.click();
-    fixture.detectChanges();
-
-    page.selectBtn.click();
-
-    expect(activeModalService.close).toHaveBeenCalledWith('bottle');
-  });
-
-});
+```ts 1:25 file=./code/icon-selector.component.spec.ts
 ```
+
+```ts 10:12 file=./code/icon-selector.component.spec.ts
+```
+
+```ts 14:19 file=./code/icon-selector.component.spec.ts
+``` 
+
+```ts 28:33 file=./code/icon-selector.component.spec.ts
+``` 
+
+```ts 35:46 file=./code/icon-selector.component.spec.ts
+``` 
+
+</CodeSurfer>
 
 ---
 
