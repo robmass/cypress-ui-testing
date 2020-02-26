@@ -1,14 +1,12 @@
-import { future, highlight } from "@mdx-deck/themes";
+import { highlight } from '@mdx-deck/themes';
 
-export const theme = { ...future, ...highlight };
+export const theme = highlight;
 
 # E2E & Frontend Testing Strategies
 
 ---
 
 ## Why should we test our code?
-
-<Steps>
 
 - To verify that it meets the **requirements**
 - To avoid **regressions** after refactoring
@@ -18,25 +16,15 @@ export const theme = { ...future, ...highlight };
     - force us to think about all cases
     - tells us when we can stop developing a feature
 
-</Steps>
-
 ---
 
 ## Why aren't we testing our code?
-
-<Steps>
 
 - Writing good tests is **hard**
 - We think that testing manually is enough and faster than writing automatic tests
 - We think that writing tests is **expensive**
 
-</Steps>
-
----
-
-## Why aren't we testing our code?
-
-![](/images/money.gif)
+<img src={images.money} />
 
 ---
 
@@ -211,23 +199,27 @@ Usually in a frontend application we mean mocking the backend APIs
 
 ---
 
-![](/images/unit-vs-integration-1.gif)
+<img src={images.unitIntegration} style={{ height: "80vh" }}/>
 
 ---
 
 ## Testing Pyramid
 
-<img src="/images/testing-pyramid.png" style={{ height: "70vh" }} />
+<img src={images.pyramid1} style={{ height: "70vh" }} />
+
+<small>
 
 https://martinfowler.com/bliki/TestPyramid.html
 
 https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html
 
+</small>
+
 ---
 
 ## Testing Trophy
 
-<img src="/images/testing-trophy.jpeg" style={{ height: "70vh" }} />
+<img src={images.pyramid2} style={{ height: "70vh" }} />
 
 https://kentcdodds.com/blog/write-tests
 
