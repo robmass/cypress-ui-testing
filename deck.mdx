@@ -105,7 +105,7 @@ What is a unit?! 🤔
 
 <CodeSurfer theme={vsDark}>
 
-```ts file=./code/icon-selector.component.ts
+```ts file=./code/icon-selector.component.ts title="Angular Component"
 ```
 
 </CodeSurfer>
@@ -114,22 +114,22 @@ What is a unit?! 🤔
 
 <CodeSurfer theme={vsDark}>
 
-```ts file=./code/icon-selector.component.spec.ts
+```ts file=./code/icon-selector.component.spec.ts title="Angular Component Unit Test"
 ```
 
-```ts 1:25 file=./code/icon-selector.component.spec.ts
+```ts 1:25 file=./code/icon-selector.component.spec.ts subtitle="Setup"
 ```
 
-```ts 10:12 file=./code/icon-selector.component.spec.ts
+```ts 10:12 file=./code/icon-selector.component.spec.ts subtitle="Create mock"
 ```
 
-```ts 14:19 file=./code/icon-selector.component.spec.ts
+```ts 14:19 file=./code/icon-selector.component.spec.ts subtitle="Configure testing module"
 ``` 
 
-```ts 28:33 file=./code/icon-selector.component.spec.ts
+```ts 28:33 file=./code/icon-selector.component.spec.ts subtitle="Test"
 ``` 
 
-```ts 35:46 file=./code/icon-selector.component.spec.ts
+```ts 35:46 file=./code/icon-selector.component.spec.ts subtitle="Test"
 ``` 
 
 </CodeSurfer>
@@ -223,13 +223,12 @@ https://kentcdodds.com/blog/write-tests
 │   └── support <---------- Utilities and custom commands
 └── cypress.json <--------- Cypress configuration
 ```
+
 ---
 
-## Configure Cypress
+<CodeSurfer theme={vsDark} title="">
 
-<CodeSurfer theme={vsDark}>
-
-```json
+```json title="Configure Cypress"
 // cypress.json
 {
   "baseUrl": "http://localhost:4200",
@@ -240,11 +239,9 @@ https://kentcdodds.com/blog/write-tests
 
 ---
 
-## Launch Cypress
-
 <CodeSurfer theme={vsDark}>
 
-```json
+```json title="Launch Cypress"
 // package.json
 {
     "scripts": {
