@@ -219,12 +219,46 @@ https://kentcdodds.com/blog/write-tests
 ├── cypress
 │   ├── fixtures <--------- Mocked Data
 │   ├── integration <------ Our tests
-│   ├── plugins <---------- Plugins/extesions
+│   ├── plugins <---------- Plugins/extensions
 │   └── support <---------- Utilities and custom commands
 └── cypress.json <--------- Cypress configuration
 ```
+---
+
+## Configure Cypress
+
+<CodeSurfer theme={vsDark}>
+
+```json
+// cypress.json
+{
+  "baseUrl": "http://localhost:4200",
+}
+```
+
+</CodeSurfer>
 
 ---
+
+## Launch Cypress
+
+<CodeSurfer theme={vsDark}>
+
+```json
+// package.json
+{
+    "scripts": {
+        ...,
+        "cy:open": "cypress open",
+        "cy:run": "cypress run"
+    }
+}
+```
+
+</CodeSurfer>
+
+---
+
 ## Links
 
 - https://testingjavascript.com/
