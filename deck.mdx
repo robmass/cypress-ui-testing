@@ -67,13 +67,18 @@ https://medium.com/@kentbeck_7670/test-desiderata-94150638a4b3
 
 ## Test Types: End To End (E2E)
 
-Test the whole application (frontend + backend) like a user
+Test the whole application (frontend + backend) like a user (usually from the browser)
+
+---
+
+## Test Types: End To End (E2E)
 
 - ✅ Great **confidence** that everything works as expected
 - ✅ Indipendent from the **code structure**
 - ❌ **Slow**
 - ❌ Difficult to make them **deterministic**
 - ❌ Less **specific**
+- ❌ No *TDD*
 
 ---
 
@@ -83,9 +88,14 @@ Test a **unit** of our code in **isolation** from the rest.
 
 What is a unit?! 🤔
 
+---
+
+## Test Types: Unit tests
+
 - ✅ **Fast**
 - ✅ Very **specific**
 - ✅ Easy to make them **deterministic**
+- ✅ *TDD*
 - ❌ Less **confidence** that everything works as expected
 - ❌ Tied to the **code structure**
 - ❌ Often require to **mock** a lot of things
@@ -131,9 +141,14 @@ Test a group of units and tests their behavior as a whole.
 
 Usually in a frontend application we mean mocking the backend APIs
 
+---
+
+## Test Types: Integration tests
+
 - ✅ Easy to make them **deterministic**
 - ✅ Almost indipendent from the **code structure**
 - ✅ Require to **mock** only external APIs
+- ✅ *TDD*
 - ❌ Less **confidence** that everything works as expected
 - **Faster** than E2E tests, but **slower** than Unit tests
 - Less **specific** than Unit tests, but more specific than E2E tests
