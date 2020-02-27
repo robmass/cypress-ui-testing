@@ -1,9 +1,10 @@
 import { CodeSurfer } from "code-surfer";
 import { vsDark } from "@code-surfer/themes";
 import { images } from "./images";
-import { themes } from 'mdx-deck'
+import { future } from 'mdx-deck/themes';
+import myTheme from "./theme";
 
-export const theme = themes.future
+export const themes = [future, myTheme];
 
 # E2E & Frontend Testing Strategies
 
