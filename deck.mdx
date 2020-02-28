@@ -304,13 +304,44 @@ https://kentcdodds.com/blog/write-tests
 ## Chains of commands
 
 - Cypress is based on [chains of commands](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Chains-of-Commands)
-    ```
+    ```ts
     cy.get("input.post-title")
       .clear()
       .type("My First Post");
     ```
 - Some commands can be chained, others cannot
 - Asynchronous (~ Promises) with automatic waiting
+
+---
+
+<CodeSurfer theme={vsDark}>
+
+```ts title="Assertions" subtitle="Single Assertion on an element"
+cy.get('button').click().should('have.class', 'active');
+```
+
+```ts title="Assertions" subtitle="Negative Assertion on an element"
+cy.get('#modal').should('not.exist');
+```
+
+```ts title="Assertions" subtitle="Multiple Assertions on an element"
+cy.get('#header a')
+  .should('have.class', 'active')
+  .and('have.attr', 'href', '/users');
+```
+
+```ts title="Assertions" subtitle="Single assertion on an object"
+cy.request('/users/1').its('body').should('deep.eq', { name: 'Jane' });
+```
+
+```ts title="Assertions" subtitle="Explicit form"
+cy.get('tbody tr:first').should(($tr) => {
+  expect($tr).to.have.class('active')
+  expect($tr).to.have.attr('href', '/users')
+})
+```
+
+</CodeSurfer>
 
 ---
 
