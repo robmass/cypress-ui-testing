@@ -1,4 +1,4 @@
-import { CodeSurfer } from "code-surfer";
+import { CodeSurfer, CodeSurferColumns, step } from "code-surfer";
 import { vsDark } from "@code-surfer/themes";
 import { images } from "./images";
 import { future } from 'mdx-deck/themes';
@@ -342,6 +342,96 @@ cy.get('tbody tr:first').should(($tr) => {
 ```
 
 </CodeSurfer>
+
+---
+
+## Selecting Elements
+
+1. Prefer selectors based on user perspective like:
+    - `cy.findByLabelText`, `cy.findByPlaceholderText`, `cy.findByTitle` 
+        from [Cypress Testing Library](https://testing-library.com/docs/cypress-testing-library/intro) 
+    - `cy.contains` from Cypress
+2. If not possible, use `cy.findByTestId` from Cypress Testing Library
+3. If not possible, use CSS selectors
+
+---
+
+<CodeSurferColumns themes={[vsDark, vsDark]}>
+
+<Step subtitle="findByLabelText">
+
+```html
+<!-- page.html -->
+
+<label for="username">Username</label>
+<input id="username" />
+```
+
+```ts
+// spec.ts
+
+cy.findByLabelText(/username/i);
+```
+
+</Step>
+
+<Step subtitle="findByTitle">
+
+```html
+<!-- page.html -->
+
+<button type="button" 
+        class="btn btn-danger"
+        title="Delete">
+            <i class="fa fa-trash"></i>
+         </button>
+```
+
+```ts
+// spec.ts
+
+cy.findByTitle(/delete/i);
+```
+
+</Step>
+
+<Step subtitle="findByTestId">
+
+```html
+<!-- page.html -->
+
+<div data-testid="chart-container">
+    <!-- ... -->
+</div>
+```
+
+```ts
+// spec.ts
+
+cy.findByTestId('chart-container');
+```
+
+</Step>
+
+<Step subtitle="CSS selector">
+
+```html 3:5
+<!-- page.html -->
+
+<div class="modal-body">
+    <!-- ... -->
+</div>
+```
+
+```ts
+// spec.ts
+
+cy.get('.modal-body')
+```
+
+</Step>
+
+</CodeSurferColumns>
 
 ---
 
