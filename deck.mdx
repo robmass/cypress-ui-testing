@@ -435,6 +435,88 @@ cy.get('.modal-body')
 
 ---
 
+<CodeSurfer theme={vsDark}>
+
+```ts title="Tip: Share code between tests and between app and tests"
+// cypress/support/selectors.ts
+export const MODAL_BODY_CLASS = '.modal-body';
+
+// cypress/integration/my-test.ts
+import { MODAL_BODY_CLASS } from 'cypress/support/selectors.ts';
+
+cy.get(MODAL_BODY_CLASS);
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={vsDark}>
+
+```ts title="Tip: Share code between tests and between app and tests"
+// cypress/support/utils.ts
+export function fillUsername(username: string) {
+    cy.findByLabelText(/username/i)
+      .clear()
+      .type(username)
+}
+
+// cypress/integration/my-test.ts
+import { fillUsername } from 'cypress/support/utils.ts';
+
+fillUsername('bender');
+```
+
+</CodeSurfer>
+
+---
+
+## Tip: Custom Commands
+
+We can create [custom commands](https://docs.cypress.io/api/cypress-api/custom-commands.html), and use them in a Cypress Chain.
+
+Useful if the code is reused a lot in our tests and it is more confortable to use it inside a chain.
+
+---
+
+<CodeSurfer theme={vsDark}>
+
+```ts title="Tip: Restrict Scope with within"
+cy.get('.modal-body').within(() => {
+    /// ...
+})
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurferColumns themes={[vsDark, vsDark]}>
+ 
+<Step title="Tip: Use the force">
+
+<div>
+    <div style={{color: "#F00", margin: "5rem 0", fontSize: "2rem"}}>
+        This element ‘&lt;input&gt;’ is not visible because its content is being clipped by one of its parent elements,
+        which has a CSS property of overflow: ‘hidden’, ‘scroll’ or ‘auto’
+    </div>
+    <img src={images.force} style={{width: "100%"}} />
+</div>
+
+```ts
+cy.get('input').type('meeeeow', { force: true })
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+TODO tips: wait, don't sleep, cleaning state beforeEach
+
+---
+
 ## Links
 
 - https://testingjavascript.com/

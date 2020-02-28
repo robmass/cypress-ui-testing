@@ -1,3 +1,4 @@
+import force from "./images/force.gif";
 import money from "./images/money.gif";
 import pyramid1 from "./images/testing-pyramid.png";
 import testingTools from "./images/testing-tools.png";
@@ -9,5 +10,6 @@ export const images = {
   pyramid1,
   pyramid2,
   unitIntegration,
-  testingTools
+  testingTools,
+  force
 };
