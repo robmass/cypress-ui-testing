@@ -475,7 +475,9 @@ fillUsername('bender');
 
 We can create [custom commands](https://docs.cypress.io/api/cypress-api/custom-commands.html), and use them in a Cypress Chain.
 
-Useful if the code is reused a lot in our tests and it is more confortable to use it inside a chain.
+Useful if the code is reused a lot in our tests and it is more comfortable to use it inside a chain, or if we want to control the output in the test runner.
+
+Check also [cypress-pipe](https://github.com/NicholasBoll/cypress-pipe) plugin.
 
 ---
 
@@ -483,7 +485,7 @@ Useful if the code is reused a lot in our tests and it is more confortable to us
 
 ```ts title="Tip: Restrict Scope with within"
 cy.get('.modal-body').within(() => {
-    /// ...
+    // ...
 })
 ```
 
