@@ -515,6 +515,37 @@ cy.get('input').type('meeeeow', { force: true })
 
 ---
 
+## [Tip: Await, don't sleep](https://docs.cypress.io/guides/references/best-practices.html#Unnecessary-Waiting)
+
+❌ Anti-Pattern: Waiting for arbitrary time periods using cy.wait(Number).
+
+✅ Best Practice: Use route aliases or assertions to guard Cypress from proceeding until an explicit condition is met.
+
+Check also [Cypress Wait Until Plugin](https://github.com/NoriSte/cypress-wait-until)
+
+---
+
+<CodeSurfer theme={vsDark}>
+
+```ts title="Await, don't sleep"
+cy.server();
+cy.route("GET", /users/, [{ name: "Maggy" }, { name: "Joan" }]);
+cy.get("#fetch").click();
+cy.wait(4000); // <--- this is unnecessary
+cy.get("table tr").should("have.length", 2);
+```
+
+```ts
+cy.server();
+cy.route("GET", /users/, [{ name: "Maggy" }, { name: "Joan" }]).as("getUsers");
+cy.get("#fetch").click();
+cy.wait("@getUsers"); // <--- wait explicitly for this route to finish
+cy.get("table tr").should("have.length", 2);
+```
+
+</CodeSurfer>
+
+---
 TODO tips: wait, don't sleep, cleaning state beforeEach
 
 ---
