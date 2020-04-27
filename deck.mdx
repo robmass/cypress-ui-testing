@@ -1,7 +1,7 @@
 import { CodeSurfer, CodeSurferColumns, step } from "code-surfer";
 import { vsDark } from "@code-surfer/themes";
 import { images } from "./images";
-import { future } from 'mdx-deck/themes';
+import { future } from "mdx-deck/themes";
 import myTheme from "./theme";
 
 export const themes = [future, myTheme];
@@ -17,8 +17,8 @@ export const themes = [future, myTheme];
 - As a **documentation**
 - To have a way to test specific cases that are difficult to test manually
 - As a **guidance** that
-    - force us to think about all cases
-    - tells us when we can stop developing a feature
+  - force us to think about all cases
+  - tells us when we can stop developing a feature
 
 ---
 
@@ -38,7 +38,7 @@ export const themes = [future, myTheme];
 
 – [A random guy on Stackoverflow](https://stackoverflow.com/a/69263/9891450)
 
---- 
+---
 
 ## Test Desiderata (1/2)
 
@@ -51,7 +51,7 @@ export const themes = [future, myTheme];
 
 https://medium.com/@kentbeck_7670/test-desiderata-94150638a4b3
 
---- 
+---
 
 ## Test Desiderata (2/2)
 
@@ -124,13 +124,13 @@ What is a unit?! 🤔
 ```
 
 ```ts 14:19 file=./code/icon-selector.component.spec.ts subtitle="Configure testing module"
-``` 
+```
 
 ```ts 28:33 file=./code/icon-selector.component.spec.ts subtitle="Test"
-``` 
+```
 
 ```ts 35:46 file=./code/icon-selector.component.spec.ts subtitle="Test"
-``` 
+```
 
 </CodeSurfer>
 
@@ -156,7 +156,7 @@ Usually in a frontend application we mean mocking the backend APIs
 
 ---
 
-<img src={images.unitIntegration} style={{ height: "80vh" }}/>
+<img src={images.unitIntegration} style={{ height: "80vh" }} />
 
 ---
 
@@ -231,7 +231,7 @@ https://kentcdodds.com/blog/write-tests
 ```json title="Configure Cypress"
 // cypress.json
 {
-  "baseUrl": "http://localhost:4200",
+  "baseUrl": "http://localhost:4200"
 }
 ```
 
@@ -304,11 +304,9 @@ https://kentcdodds.com/blog/write-tests
 ## Chains of commands
 
 - Cypress is based on [chains of commands](https://docs.cypress.io/guides/core-concepts/introduction-to-cypress.html#Chains-of-Commands)
-    ```ts
-    cy.get("input.post-title")
-      .clear()
-      .type("My First Post");
-    ```
+  ```ts
+  cy.get("input.post-title").clear().type("My First Post");
+  ```
 - Some commands can be chained, others cannot
 - Asynchronous (~ Promises) with automatic waiting
 
@@ -317,28 +315,28 @@ https://kentcdodds.com/blog/write-tests
 <CodeSurfer theme={vsDark}>
 
 ```ts title="Assertions" subtitle="Single Assertion on an element"
-cy.get('button').click().should('have.class', 'active');
+cy.get("button").click().should("have.class", "active");
 ```
 
 ```ts title="Assertions" subtitle="Negative Assertion on an element"
-cy.get('#modal').should('not.exist');
+cy.get("#modal").should("not.exist");
 ```
 
 ```ts title="Assertions" subtitle="Multiple Assertions on an element"
-cy.get('#header a')
-  .should('have.class', 'active')
-  .and('have.attr', 'href', '/users');
+cy.get("#header a")
+  .should("have.class", "active")
+  .and("have.attr", "href", "/users");
 ```
 
 ```ts title="Assertions" subtitle="Single assertion on an object"
-cy.request('/users/1').its('body').should('deep.eq', { name: 'Jane' });
+cy.request("/users/1").its("body").should("deep.eq", { name: "Jane" });
 ```
 
 ```ts title="Assertions" subtitle="Explicit form"
-cy.get('tbody tr:first').should(($tr) => {
-  expect($tr).to.have.class('active')
-  expect($tr).to.have.attr('href', '/users')
-})
+cy.get("tbody tr:first").should(($tr) => {
+  expect($tr).to.have.class("active");
+  expect($tr).to.have.attr("href", "/users");
+});
 ```
 
 </CodeSurfer>
@@ -348,9 +346,9 @@ cy.get('tbody tr:first').should(($tr) => {
 ## Selecting Elements
 
 1. Prefer selectors based on user perspective like:
-    - `cy.findByLabelText`, `cy.findByPlaceholderText`, `cy.findByTitle` 
-        from [Cypress Testing Library](https://testing-library.com/docs/cypress-testing-library/intro) 
-    - `cy.contains` from Cypress
+   - `cy.findByLabelText`, `cy.findByPlaceholderText`, `cy.findByTitle`
+     from [Cypress Testing Library](https://testing-library.com/docs/cypress-testing-library/intro)
+   - `cy.contains` from Cypress
 2. If not possible, use `cy.findByTestId` from Cypress Testing Library
 3. If not possible, use CSS selectors
 
@@ -380,11 +378,9 @@ cy.findByLabelText(/username/i);
 ```html
 <!-- page.html -->
 
-<button type="button" 
-        class="btn btn-danger"
-        title="Delete">
-            <i class="fa fa-trash"></i>
-         </button>
+<button type="button" class="btn btn-danger" title="Delete">
+  <i class="fa fa-trash"></i>
+</button>
 ```
 
 ```ts
@@ -401,14 +397,14 @@ cy.findByTitle(/delete/i);
 <!-- page.html -->
 
 <div data-testid="chart-container">
-    <!-- ... -->
+  <!-- ... -->
 </div>
 ```
 
 ```ts
 // spec.ts
 
-cy.findByTestId('chart-container');
+cy.findByTestId("chart-container");
 ```
 
 </Step>
@@ -419,14 +415,14 @@ cy.findByTestId('chart-container');
 <!-- page.html -->
 
 <div class="modal-body">
-    <!-- ... -->
+  <!-- ... -->
 </div>
 ```
 
 ```ts
 // spec.ts
 
-cy.get('.modal-body')
+cy.get(".modal-body");
 ```
 
 </Step>
@@ -439,10 +435,10 @@ cy.get('.modal-body')
 
 ```ts title="Tip: Share code between tests and between app and tests"
 // cypress/support/selectors.ts
-export const MODAL_BODY_CLASS = '.modal-body';
+export const MODAL_BODY_CLASS = ".modal-body";
 
 // cypress/integration/my-test.ts
-import { MODAL_BODY_CLASS } from 'cypress/support/selectors.ts';
+import { MODAL_BODY_CLASS } from "cypress/support/selectors.ts";
 
 cy.get(MODAL_BODY_CLASS);
 ```
@@ -456,15 +452,15 @@ cy.get(MODAL_BODY_CLASS);
 ```ts title="Tip: Share code between tests and between app and tests"
 // cypress/support/utils.ts
 export function fillUsername(username: string) {
-    cy.findByLabelText(/username/i)
-      .clear()
-      .type(username)
+  cy.findByLabelText(/username/i)
+    .clear()
+    .type(username);
 }
 
 // cypress/integration/my-test.ts
-import { fillUsername } from 'cypress/support/utils.ts';
+import { fillUsername } from "cypress/support/utils.ts";
 
-fillUsername('bender');
+fillUsername("bender");
 ```
 
 </CodeSurfer>
@@ -484,9 +480,9 @@ Check also [cypress-pipe](https://github.com/NicholasBoll/cypress-pipe) plugin.
 <CodeSurfer theme={vsDark}>
 
 ```ts title="Tip: Restrict Scope with within"
-cy.get('.modal-body').within(() => {
-    // ...
-})
+cy.get(".modal-body").within(() => {
+  // ...
+});
 ```
 
 </CodeSurfer>
@@ -498,15 +494,16 @@ cy.get('.modal-body').within(() => {
 <Step title="Tip: Use the force">
 
 <div>
-    <div style={{color: "#F00", margin: "5rem 0", fontSize: "2rem"}}>
-        This element ‘&lt;input&gt;’ is not visible because its content is being clipped by one of its parent elements,
-        which has a CSS property of overflow: ‘hidden’, ‘scroll’ or ‘auto’
-    </div>
-    <img src={images.force} style={{width: "100%"}} />
+  <div style={{ color: "#F00", margin: "5rem 0", fontSize: "2rem" }}>
+    This element ‘&lt;input&gt;’ is not visible because its content is being
+    clipped by one of its parent elements, which has a CSS property of overflow:
+    ‘hidden’, ‘scroll’ or ‘auto’
+  </div>
+  <img src={images.force} style={{ width: "100%" }} />
 </div>
 
 ```ts
-cy.get('input').type('meeeeow', { force: true })
+cy.get("input").type("meeeeow", { force: true });
 ```
 
 </Step>
@@ -546,6 +543,7 @@ cy.get("table tr").should("have.length", 2);
 </CodeSurfer>
 
 ---
+
 TODO tips: wait, don't sleep, cleaning state beforeEach
 
 ---
