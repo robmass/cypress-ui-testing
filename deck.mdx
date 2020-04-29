@@ -595,9 +595,17 @@ cy.route("/users/*", "fx:users/user1.json");
 
 ---
 
+## Create fixture
+
+- Copy response from existing API:<br />
+  <img src={images.chromeRequest} />
+- Use [OpenAPI Mock Generator](https://github.com/Fredx87/openapi-mock-generator)
+
+---
+
 ## Keycloak
 
-Fake login using [cypress-keycloak-commands]()
+Fake login using [cypress-keycloak-commands](https://github.com/Fredx87/cypress-keycloak-commands)
 
 ```ts
 describe("Feature", () => {

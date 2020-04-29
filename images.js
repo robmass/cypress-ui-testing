@@ -1,3 +1,4 @@
+import chromeRequest from "./images/chrome-request.png";
 import force from "./images/force.gif";
 import money from "./images/money.gif";
 import pyramid1 from "./images/testing-pyramid.png";
@@ -11,5 +12,6 @@ export const images = {
   pyramid2,
   unitIntegration,
   testingTools,
-  force
+  force,
+  chromeRequest
 };
