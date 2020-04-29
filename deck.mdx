@@ -576,20 +576,21 @@ cy.get("table tr").should("have.length", 2);
 
 ## Integration tests
 
-- Stub network requests to backend APIs and Keycloak.
+- [Stub network requests](https://docs.cypress.io/guides/guides/network-requests.html) to backend APIs and Keycloak.
 - Test are completely indipendent from external resources, they are fast and we can easily test edge cases
 
 ---
 
-## [Stubbing requests](https://docs.cypress.io/guides/guides/network-requests.html)
+## Stubbing requests
 
 ```typescript
-cy.server(); // enable response stubbing
-cy.route({
-  method: "GET", // Route all GET requests
-  url: "/users/*", // that have a URL that matches '/users/*'
-  response: [], // and force the response to be: []
-});
+cy.server();
+
+// method, path, response
+cy.route("POST", "/users", { result: "Ok" });
+
+// fixtures (implicit GET method)
+cy.route("/users/*", "fx:users/user1.json");
 ```
 
 ---
