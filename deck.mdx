@@ -562,11 +562,35 @@ cy.get("table tr").should("have.length", 2);
 
 ---
 
-# [TIP: Clean state in the beforeEach hook](https://docs.cypress.io/guides/references/best-practices.html#Using-after-or-afterEach-hooks)
+## [TIP: Clean state in the beforeEach hook](https://docs.cypress.io/guides/references/best-practices.html#Using-after-or-afterEach-hooks)
 
 ❌ Anti-Pattern: Using after or afterEach hooks to clean up state.
 
 ✅ Best Practice: Clean up state before tests run.
+
+---
+
+# Integration tests
+
+---
+
+## Integration tests
+
+- Stub network requests to backend APIs and Keycloak.
+- Test are completely indipendent from external resources, they are fast and we can easily test edge cases
+
+---
+
+## [Stubbing requests](https://docs.cypress.io/guides/guides/network-requests.html)
+
+```typescript
+cy.server(); // enable response stubbing
+cy.route({
+  method: "GET", // Route all GET requests
+  url: "/users/*", // that have a URL that matches '/users/*'
+  response: [], // and force the response to be: []
+});
+```
 
 ---
 
