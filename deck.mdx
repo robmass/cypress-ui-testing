@@ -595,6 +595,36 @@ cy.route("/users/*", "fx:users/user1.json");
 
 ---
 
+## Keycloak
+
+Fake login using [cypress-keycloak-commands]()
+
+```ts
+describe("Feature", () => {
+  beforeEach(() => {
+    cy.kcFakeLogin("user", "pageToVisit");
+  });
+});
+```
+
+---
+
+## Keycloak
+
+```json
+// cypress/fixtures/users/user.json
+{
+  "fakeLogin": {
+    "access_token": "...",
+    "refresh_token": "...",
+    "id_token": "...",
+    "account": { ... }
+  }
+}
+```
+
+---
+
 ## Links
 
 - https://testingjavascript.com/
