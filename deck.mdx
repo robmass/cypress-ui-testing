@@ -669,6 +669,29 @@ describe("Feature", () => {
 
 ---
 
+# E2E tests
+
+---
+
+## E2E Tests
+
+- Test the whole system (frontend, backend, Keycloak, DB, ...)
+- Mock only external parts (e.g. SMTP Server, Devices, External APIs...)
+- Need the possiblity to have a clean state before tests execution
+
+---
+
+## Clean state
+
+- For testing **before the deploy**
+  - Setup a clean environment (even a local one with `docker-compose`)
+  - Script for put the DB in a clean state before each test
+- If not possible, E2E tests can be run on the **deployed version** on the dev environment
+  - Have a way to have a clean state before each test
+  - e.g. in a multi-tenant application have a "Test" tenant and delete all linked records before each test
+
+---
+
 ## Links
 
 - https://testingjavascript.com/
