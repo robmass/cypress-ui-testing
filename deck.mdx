@@ -683,6 +683,8 @@ describe("Feature", () => {
 
 ## Clean state
 
+There are many ways, depending on the project. Examples:
+
 - For testing **before the deploy**
   - Setup a clean environment (even a local one with `docker-compose`)
   - Script for put the DB in a clean state before each test
@@ -716,6 +718,34 @@ describe("Feature", () => {
   "username": "user",
   "password": "password"
 }
+```
+
+---
+
+## Cypress task
+
+Create a [Cypress task](https://docs.cypress.io/api/commands/task.html) running in Node
+
+```ts
+// plugins/index.js
+module.exports = (on, config) => {
+  on('task', {
+    cleanupDb() { ... }
+  })
+}
+```
+
+---
+
+## Using task
+
+```ts
+// integration/feature/sub-feature.e2e.spec.ts
+describe("Feature / E2E", () => {
+  beforeEach(() => {
+    cy.task("cleanupDb");
+  });
+});
 ```
 
 ---
