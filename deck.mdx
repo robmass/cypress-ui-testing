@@ -1,4 +1,4 @@
-import { CodeSurfer, CodeSurferColumns, step } from "code-surfer";
+import { CodeSurfer, CodeSurferColumns, Step } from "code-surfer";
 import { vsDark } from "@code-surfer/themes";
 import { images } from "./images";
 import { future, prism } from "mdx-deck/themes";
@@ -783,6 +783,54 @@ describe("Feature / E2E", () => {
 ```
 
 </CodeSurfer>
+
+---
+
+# Unit tests
+
+---
+
+## Unit tests
+
+- Test a function, a class, or a component in **isolation**
+- For testing **complex business logic** in a more convenient way, or for logic that cannot be tested in another way (e.g. charts)
+- For testing **shared components** that are indipendent from services
+
+---
+
+<CodeSurferColumns themes={[vsDark, vsDark]}>
+
+<Step title="Unit test example">
+
+```ts
+// src/calculator.ts
+export function sum(a: number, b: number): number {
+  return a + b;
+}
+```
+
+```ts
+// cypress/integration/calculator.test.ts
+import { sum } from "../../src/calculator.ts";
+
+it("should sum numbers", function () {
+  expect(sum(1, 2)).to.eq(3);
+});
+```
+
+</Step>
+
+</CodeSurferColumns>
+
+---
+
+## Pure functions
+
+- Isolate the logic under test in a **pure function**
+- In application code, run side effects (e.g. HTTP calls, translations, ...) outside the function and pass the result
+  to the function (**functional core, imperative shell** pattern)
+- If not possibile (for example if you need to make an HTTP call based on a condition),
+  create a function to make the HTTP call and pass it to the pure function
 
 ---
 
