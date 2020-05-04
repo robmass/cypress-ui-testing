@@ -692,6 +692,34 @@ describe("Feature", () => {
 
 ---
 
+## Keycloak
+
+Real login using [cypress-keycloak-commands](https://github.com/Fredx87/cypress-keycloak-commands)
+
+```ts
+describe("Feature", () => {
+  beforeEach(() => {
+    cy.kcLogout();
+    cy.kcLogin("user");
+    cy.visit("/");
+  });
+});
+```
+
+---
+
+## Keycloak
+
+```json
+// cypress/fixtures/users/user.json
+{
+  "username": "user",
+  "password": "password"
+}
+```
+
+---
+
 ## Links
 
 - https://testingjavascript.com/
