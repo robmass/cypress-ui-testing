@@ -539,16 +539,13 @@ Check also [Cypress Wait Until Plugin](https://github.com/NoriSte/cypress-wait-u
 <CodeSurfer theme={vsDark}>
 
 ```ts title="Await, don't sleep"
-cy.server();
-cy.route("GET", /users/, [{ name: "Maggy" }, { name: "Joan" }]);
 cy.get("#fetch").click();
 cy.wait(4000); // <--- this is unnecessary
 cy.get("table tr").should("have.length", 2);
 ```
 
 ```ts
-cy.server();
-cy.route("GET", /users/, [{ name: "Maggy" }, { name: "Joan" }]).as("getUsers");
+cy.route("GET", "/users").as("getUsers");
 cy.get("#fetch").click();
 cy.wait("@getUsers"); // <--- wait explicitly for this route to finish
 cy.get("table tr").should("have.length", 2);
