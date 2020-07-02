@@ -3,6 +3,7 @@ import { vsDark } from "@code-surfer/themes";
 import { images } from "./images";
 import { future, prism } from "mdx-deck/themes";
 import myTheme from "./theme";
+import "prismjs/components/prism-gherkin";
 
 export const themes = [future, myTheme, prism];
 
@@ -880,6 +881,25 @@ it coould be really useseful.
 - Useful during **code reviews** to check if critical paths are tested
 
 https://www.atlassian.com/continuous-delivery/software-testing/code-coverage
+
+---
+
+<CodeSurfer theme={vsDark}>
+
+```gherkin file=./code/bdd.feature title="BDD / Gherkin"
+
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={vsDark}>
+
+```js file=./code/bdd.js title="Gherkin + Cypress"
+```
+
+</CodeSurfer>
 
 ---
 
