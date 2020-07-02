@@ -1,4 +1,5 @@
 import { CodeSurfer, CodeSurferColumns, Step } from "code-surfer";
+import { Notes, Appear } from "mdx-deck";
 import { vsDark } from "@code-surfer/themes";
 import { images } from "./images";
 import { future, prism } from "mdx-deck/themes";
@@ -23,17 +24,31 @@ export const themes = [future, myTheme, prism];
 
 # Testing Theory
 
+<Notes>
+
+- Evaluate Pros/cons
+
+</Notes>
+
 ---
 
-## Why should we test our code?
+## Why should we test (automatically) our code?
+
+<Appear>
 
 - To verify that it meets the **requirements**
 - To avoid **regressions** after refactoring
-- As a **documentation**
-- To have a way to test specific cases that are difficult to test manually
-- As a **guidance** that
-  - force us to think about all cases
-  - tells us when we can stop developing a feature
+- As a **documentation** - To have a way to test specific cases that are difficult to test manually
+- Manual tests are **slow** and **error prone**
+
+</Appear>
+
+<Notes>
+
+- Documentation: new developers can easily play with the code
+- Example: long procedure to reach desided state
+
+</Notes>
 
 ---
 
@@ -44,6 +59,21 @@ export const themes = [future, myTheme, prism];
 - We think that writing tests is **expensive**
 
 <img src={images.money} />
+
+---
+
+## Reality
+
+- We test our code multiple times even during development
+- Impossibile to have a clear picture of an entire application
+
+---
+
+## Reality
+
+<img src={images.testCurve} />
+
+https://www.cantierecreativo.net/blog/2015-03-27-to-test-or-not-to-test/
 
 ---
 
