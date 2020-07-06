@@ -38,8 +38,9 @@ export const themes = [future, myTheme, prism];
 
 - To verify that it meets the **requirements**
 - To avoid **regressions** after refactoring
-- As a **documentation** - To have a way to test specific cases that are difficult to test manually
 - Manual tests are **slow** and **error prone**
+- As a **documentation**
+- To have a way to test specific cases that are difficult to test manually
 
 </Appear>
 
@@ -74,6 +75,12 @@ export const themes = [future, myTheme, prism];
 <img src={images.testCurve} />
 
 https://www.cantierecreativo.net/blog/2015-03-27-to-test-or-not-to-test/
+
+<Notes>
+
+Importance of having tests from day 1
+
+</Notes>
 
 ---
 
@@ -134,6 +141,12 @@ Test a **unit** of our code in **isolation** from the rest.
 
 What is a unit?! 🤔
 
+<Notes>
+
+Different units: classes, functions, components
+
+</Notes>
+
 ---
 
 ## Test Types: Unit tests
@@ -154,6 +167,12 @@ What is a unit?! 🤔
 ```
 
 </CodeSurfer>
+
+<Notes>
+
+Example of Angular test, Angular way, we will not use it
+
+</Notes>
 
 ---
 
@@ -178,6 +197,12 @@ What is a unit?! 🤔
 ```
 
 </CodeSurfer>
+
+<Notes>
+
+Two problems: implementation, not easy to write
+
+</Notes>
 
 ---
 
@@ -225,6 +250,14 @@ https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html
 
 https://kentcdodds.com/blog/write-tests
 
+<Notes>
+
+- E2E: Happy path
+- Integration: corner cases
+- Unit: Businnes logic
+
+</Notes>
+
 ---
 
 ## Other test types
@@ -255,11 +288,23 @@ Only an overview, don't go into details
 
 <img src={images.testingTools} />
 
+<Notes>
+
+Demos of Jamsine (Angular), Jest (React), Cypress
+
+</Notes>
+
 ---
 
 ## Our "Recipe"
 
 <img src={images.testingToolsCypress} />
+
+<Notes>
+
+Unit tests in Cypress not enough mature
+
+</Notes>
 
 ---
 
@@ -368,6 +413,12 @@ Only an overview, don't go into details
 - Some commands can be chained, others cannot
 - Asynchronous (~ Promises) with automatic waiting
 
+<Notes>
+
+Focus on automatic waiting and retryability
+
+</Notes>
+
 ---
 
 <CodeSurfer theme={vsDark}>
@@ -398,6 +449,12 @@ cy.get("tbody tr:first").should(($tr) => {
 ```
 
 </CodeSurfer>
+
+<Notes>
+
+Focus on retryability of should command
+
+</Notes>
 
 ---
 
