@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "start": "mdx-deck deck.mdx",
-    "build": "mdx-deck build deck.mdx"
+    "build": "mdx-deck build deck.mdx && node ./replace-paths.js"
   },
   "author": "",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/node": "^14.0.14"
+  },
   "dependencies": {
     "mdx-deck": "^3.1.0",
     "code-surfer": "^3.1.0"
