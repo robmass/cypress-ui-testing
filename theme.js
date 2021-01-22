@@ -4,10 +4,15 @@ export default {
   styles: {
     Slide: {
       justifyContent: "flex-start",
-      padding: "0 60px"
-    }
+      padding: "0 60px",
+    },
   },
   prism: {
-    style: vsDark
-  }
+    style: vsDark,
+  },
+  colors: {
+    text: "#d6deeb",
+    background: "#011627",
+    link: "#addb67",
+  },
 };

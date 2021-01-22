@@ -1,32 +1,30 @@
 import { CodeSurfer, CodeSurferColumns, Step } from "code-surfer";
 import { Notes, Appear } from "mdx-deck";
 import { vsDark } from "@code-surfer/themes";
+import { nightOwl } from "@code-surfer/themes";
 import { images } from "./images";
 import { future, prism } from "mdx-deck/themes";
 import myTheme from "./theme";
 import "prismjs/components/prism-gherkin";
 
-export const themes = [future, myTheme, prism];
+export const themes = [future, myTheme];
 
-# E2E & Frontend Testing Strategies
-
-<small>
-
-`ALT + G` → Grid view
-
-`ALT + O` → Sidebar with index
-
-</small>
+# UI Testing
 
 ---
 
 ## Agenda
 
+1. Crushtravel
 1. Testing Theory
 1. Testing tools / Cypress
 1. Integration tests
 1. E2E tests
 1. Unit tests
+
+---
+
+# Crushtravel
 
 ---
 
@@ -47,7 +45,7 @@ export const themes = [future, myTheme, prism];
 - To verify that it meets the **requirements**
 - To avoid **regressions** after refactoring
 - Manual tests are **slow** and **error prone**
-- As a **documentation**
+- As a **flow descriptor**
 - To have a way to test specific cases that are difficult to test manually
 
 </Appear>
@@ -58,71 +56,6 @@ export const themes = [future, myTheme, prism];
 - Example: long procedure to reach desided state
 
 </Notes>
-
----
-
-## Why aren't we testing our code?
-
-- Writing good tests is **hard**
-- We think that testing manually is enough and faster than writing automatic tests
-- We think that writing tests is **expensive**
-
-<img src={images.money} />
-
----
-
-## Reality
-
-- We test our code multiple times even during development
-- Impossibile to have a clear picture of an entire application
-
----
-
-## Reality
-
-<img src={images.testCurve} />
-
-https://www.cantierecreativo.net/blog/2015-03-27-to-test-or-not-to-test/
-
-<Notes>
-
-Importance of having tests from day 1
-
-</Notes>
-
----
-
-## Test Desiderata (1/2)
-
-- **Isolated** — tests should return the same results regardless of the order in which they are run.
-- **Composable** — if tests are isolated, then I can run 1 or 10 or 100 or 1,000,000 and get the same results.
-- **Deterministic** — if nothing changes, the test result shouldn’t change.
-- **Behavioral** — tests should be sensitive to changes in the behavior of the code under test. If the behavior changes, the test result should change.
-- **Structure-insensitive** — tests should not change their result if the structure of the code changes.
-- **Specific** — if a test fails, the cause of the failure should be obvious.
-
-https://medium.com/@kentbeck_7670/test-desiderata-94150638a4b3
-
-<Notes>
-
-- Always a tradeoff, impossibile to have all of these
-- Why isolate? Understand where is the error, re-run same test
-- Non deterministic: global state (e.g. user register), date-time (e.g. dst), concurrency, ...
-
-</Notes>
-
----
-
-## Test Desiderata (2/2)
-
-- **Fast** — tests should run quickly.
-- **Writable** — tests should be cheap to write relative to the cost of the code being tested.
-- **Readable** — tests should be comprehensible for reader, invoking the motivation for writing this particular test.
-- **Automated** — tests should run without human intervention.
-- **Predictive** — if the tests all pass, then the code under test should be suitable for production.
-- **Inspiring** — passing the tests should inspire confidence
-
-https://medium.com/@kentbeck_7670/test-desiderata-94150638a4b3
 
 ---
 
@@ -169,9 +102,10 @@ Different units: classes, functions, components
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts file=./code/icon-selector.component.ts title="Angular Component"
+
 ```
 
 </CodeSurfer>
@@ -184,24 +118,30 @@ Example of Angular test, Angular way, we will not use it
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts file=./code/icon-selector.component.spec.ts title="Angular Component Unit Test"
+
 ```
 
 ```ts 1:25 file=./code/icon-selector.component.spec.ts subtitle="Setup"
+
 ```
 
 ```ts 10:12 file=./code/icon-selector.component.spec.ts subtitle="Create mock"
+
 ```
 
 ```ts 14:19 file=./code/icon-selector.component.spec.ts subtitle="Configure testing module"
+
 ```
 
 ```ts 28:33 file=./code/icon-selector.component.spec.ts subtitle="Test"
+
 ```
 
 ```ts 35:46 file=./code/icon-selector.component.spec.ts subtitle="Test"
+
 ```
 
 </CodeSurfer>
@@ -268,51 +208,7 @@ https://kentcdodds.com/blog/write-tests
 
 ---
 
-## Other test types
-
-- Smoke tests
-- Visual regression tests ([Percy](https://percy.io/), [Applitools](https://applitools.com/))
-- Load tests ([JMeter](https://jmeter.apache.org/))
-- Penetration tests
-- Contract testing ([Pact](https://pact.io/), [Dredd](https://dredd.org/en/latest/))
-- Mutation tests ([Stryker](https://stryker-mutator.io/))
-- Property based tests ([Fast-check](https://github.com/dubzzz/fast-check))
-- Fuzz testing
-- ...
-
-<Notes>
-
-Only an overview, don't go into details
-
-</Notes>
-
----
-
 # Testing tools / Cypress
-
----
-
-## Testing Tools
-
-<img src={images.testingTools} />
-
-<Notes>
-
-Demos of Jamsine (Angular), Jest (React), Cypress
-
-</Notes>
-
----
-
-## Our "Recipe"
-
-<img src={images.testingToolsCypress} />
-
-<Notes>
-
-Unit tests in Cypress not enough mature
-
-</Notes>
 
 ---
 
@@ -332,11 +228,11 @@ Unit tests in Cypress not enough mature
 
 ```
 ├── cypress
-│   ├── fixtures <--------- Mocked Data
-│   ├── integration <------ Our tests
-│   ├── plugins <---------- Plugins/extensions
-│   └── support <---------- Utilities and custom commands
-└── cypress.json <--------- Cypress configuration
+│   ├── fixtures  <------ Mocked Data
+│   ├── tests     <------ Our tests
+│   ├── plugins   <------ Plugins/extensions
+│   └── support   <------ Utilities and custom commands
+└── cypress.json  <------ Cypress configuration
 ```
 
 ---
@@ -347,6 +243,7 @@ Unit tests in Cypress not enough mature
 // cypress.json
 {
   "baseUrl": "http://localhost:4200"
+  "integrationFolder": "cypress/tests"
 }
 ```
 
@@ -367,45 +264,22 @@ Unit tests in Cypress not enough mature
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts file=./code/test-structure.ts title="Test file structure"
+
 ```
 
 ```ts 3:3 file=./code/test-structure.ts subtitle="Group"
+
 ```
 
 ```ts 4:18 file=./code/test-structure.ts subtitle="Hooks"
+
 ```
 
 ```ts 20:30 file=./code/test-structure.ts subtitle="Tests"
-```
 
-</CodeSurfer>
-
----
-
-<CodeSurfer theme={vsDark}>
-
-```ts file=./code/cypress-first-test.ts title="Cypress test example"
-```
-
-```ts 3:3 file=./code/cypress-first-test.ts
-```
-
-```ts 5:7 file=./code/cypress-first-test.ts
-```
-
-```ts 9:11 file=./code/cypress-first-test.ts
-```
-
-```ts 13:13 file=./code/cypress-first-test.ts
-```
-
-```ts 15:15 file=./code/cypress-first-test.ts
-```
-
-```ts 17:17 file=./code/cypress-first-test.ts
 ```
 
 </CodeSurfer>
@@ -429,7 +303,7 @@ Focus on automatic waiting and retryability
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts title="Assertions" subtitle="Single Assertion on an element"
 cy.get("button").click().should("have.class", "active");
@@ -440,9 +314,7 @@ cy.get("#modal").should("not.exist");
 ```
 
 ```ts title="Assertions" subtitle="Multiple Assertions on an element"
-cy.get("#header a")
-  .should("have.class", "active")
-  .and("have.attr", "href", "/users");
+cy.get("#header a").should("have.class", "active").and("have.attr", "href", "/users");
 ```
 
 ```ts title="Assertions" subtitle="Single assertion on an object"
@@ -477,7 +349,7 @@ Focus on retryability of should command
 
 ---
 
-<CodeSurferColumns themes={[vsDark, vsDark]}>
+<CodeSurferColumns themes={[nightOwl, nightOwl]}>
 
 <Step subtitle="findByLabelText">
 
@@ -554,7 +426,7 @@ cy.get(".modal-body");
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts title="Tip: Share code between tests and between app and tests"
 // cypress/support/selectors.ts
@@ -570,7 +442,7 @@ cy.get(MODAL_BODY_CLASS);
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts title="Tip: Share code between tests and between app and tests"
 // cypress/support/utils.ts
@@ -596,42 +468,19 @@ We can create [custom commands](https://docs.cypress.io/api/cypress-api/custom-c
 
 Useful if the code is reused a lot in our tests and it is more comfortable to use it inside a chain, or if we want to control the output in the test runner.
 
-Check also [cypress-pipe](https://github.com/NicholasBoll/cypress-pipe) plugin.
-
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
-```ts title="Tip: Restrict Scope with within"
-cy.get(".modal-body").within(() => {
-  // ...
-});
+```ts file=./code/cypress-commands.ts title="Cypress custom commands"
+
+```
+
+```ts 3:7 file=./code/cypress-commands.ts subtitle="Accept dialog command"
+
 ```
 
 </CodeSurfer>
-
----
-
-<CodeSurferColumns themes={[vsDark, vsDark]}>
- 
-<Step title="Tip: Use the force">
-
-<div>
-  <div style={{ color: "#F00", margin: "5rem 0", fontSize: "2rem" }}>
-    This element ‘&lt;input&gt;’ is not visible because its content is being
-    clipped by one of its parent elements, which has a CSS property of overflow:
-    ‘hidden’, ‘scroll’ or ‘auto’
-  </div>
-  <img src={images.force} style={{ width: "100%" }} />
-</div>
-
-```ts
-cy.get("input").type("meeeeow", { force: true });
-```
-
-</Step>
-
-</CodeSurferColumns>
 
 ---
 
@@ -641,11 +490,9 @@ cy.get("input").type("meeeeow", { force: true });
 
 ✅ Best Practice: Use route aliases or assertions to guard Cypress from proceeding until an explicit condition is met.
 
-Check also [Cypress Wait Until Plugin](https://github.com/NoriSte/cypress-wait-until)
-
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts title="Await, don't sleep"
 cy.get("#fetch").click();
@@ -654,9 +501,14 @@ cy.get("table tr").should("have.length", 2);
 ```
 
 ```ts
-cy.route("GET", "/users").as("getUsers");
+cy.intercept("POST", "/api", (req) => {
+  if (req.body.operationName === "IsEmailAvailable") {
+    req.alias = "gqlIsEmailAvailableQuery";
+    req.reply({ isEmailAvailable: false });
+  }
+});
 cy.get("#fetch").click();
-cy.wait("@getUsers"); // <--- wait explicitly for this route to finish
+cy.wait("@gqlIsEmailAvailableQuery"); // <--- wait explicitly for this mutation
 cy.get("table tr").should("have.length", 2);
 ```
 
@@ -685,86 +537,70 @@ cy.get("table tr").should("have.length", 2);
 
 ## Stubbing requests
 
-```typescript
-cy.server();
+<CodeSurfer theme={nightOwl}>
 
-// method, path, response
-cy.route("POST", "/users", { result: "Ok" });
+```ts file=./code/intercept.ts title="Stubbing request example"
 
-// fixtures (implicit GET method)
-cy.route("/users/*", "fx:users/user1.json");
 ```
 
----
+```ts 2:2 file=./code/intercept.ts title="Stubbing request example" subtitle="Intercept"
 
-## Create fixture
-
-- Copy response from existing API:<br />
-  <img src={images.chromeRequest} />
-- Use [OpenAPI Mock Generator](https://github.com/Fredx87/openapi-mock-generator)
-
----
-
-## Keycloak
-
-Fake login using [cypress-keycloak-commands](https://github.com/Fredx87/cypress-keycloak-commands)
-
-```ts
-describe("Feature", () => {
-  beforeEach(() => {
-    cy.kcFakeLogin("user", "pageToVisit");
-  });
-});
 ```
 
----
+```ts 3:15 file=./code/intercept.ts title="Stubbing request example" subtitle="Switch"
 
-## Keycloak
-
-```json
-// cypress/fixtures/users/user.json
-{
-  "fakeLogin": {
-    "access_token": "...",
-    "refresh_token": "...",
-    "id_token": "...",
-    "account": { ... }
-  }
-}
 ```
 
----
+```ts 7:7 file=./code/intercept.ts  title="Stubbing request example" subtitle="Fixture"
 
-<CodeSurfer theme={vsDark}>
-
-```ts file=./code/integration1.ts title="Integration test example"
 ```
 
-```ts 3:8 file=./code/integration1.ts title="Integration test example" subtitle="Arrange"
-```
+```ts 17:17 file=./code/intercept.ts  title="Stubbing request example" subtitle="Call API"
 
-```ts 10:10 file=./code/integration1.ts title="Integration test example" subtitle="Act"
-```
-
-```ts 12:12 file=./code/integration1.ts  title="Integration test example" subtitle="Assert"
 ```
 
 </CodeSurfer>
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
+
+```ts file=./code/integration1.ts title="Integration test example"
+
+```
+
+```ts 3:8 file=./code/integration1.ts title="Integration test example" subtitle="Arrange"
+
+```
+
+```ts 10:10 file=./code/integration1.ts title="Integration test example" subtitle="Act"
+
+```
+
+```ts 12:12 file=./code/integration1.ts  title="Integration test example" subtitle="Assert"
+
+```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
 
 ```ts file=./code/integration2.ts title="Integration test example - put"
+
 ```
 
 ```ts 2:9 file=./code/integration2.ts title="Integration test example - put"
+
 ```
 
 ```ts 12:21 file=./code/integration2.ts title="Integration test example - put"
+
 ```
 
 ```ts 23:27 file=./code/integration2.ts  title="Integration test example - put"
+
 ```
 
 </CodeSurfer>
@@ -777,7 +613,7 @@ describe("Feature", () => {
 
 ## E2E Tests
 
-- Test the whole system (frontend, backend, Keycloak, DB, ...)
+- Test the whole system (frontend, backend, DB, ...)
 - Mock only external parts (e.g. SMTP Server, Devices, External APIs...)
 - Need the possiblity to have a clean state before tests execution
 
@@ -793,34 +629,6 @@ There are many ways, depending on the project. Examples:
 - If not possible, E2E tests can be run on the **deployed version** on the dev environment
   - Have a way to have a clean state before each test
   - e.g. in a multi-tenant application have a "Test" tenant and delete all linked records before each test
-
----
-
-## Keycloak
-
-Real login using [cypress-keycloak-commands](https://github.com/Fredx87/cypress-keycloak-commands)
-
-```ts
-describe("Feature", () => {
-  beforeEach(() => {
-    cy.kcLogout();
-    cy.kcLogin("user");
-    cy.visit("/");
-  });
-});
-```
-
----
-
-## Keycloak
-
-```json
-// cypress/fixtures/users/user.json
-{
-  "username": "user",
-  "password": "password"
-}
-```
 
 ---
 
@@ -852,36 +660,44 @@ describe("Feature / E2E", () => {
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts file=./code/e2e1.ts title="E2E test - complete flow"
+
 ```
 
 ```ts 2:9 file=./code/e2e1.ts title="E2E test - complete flow"
+
 ```
 
 ```ts 11:23 file=./code/e2e1.ts title="E2E test - complete flow"
+
 ```
 
 </CodeSurfer>
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts file=./code/e2e2.ts title="E2E test - different steps"
+
 ```
 
 ```ts 2:9 file=./code/e2e2.ts title="E2E test - different steps"
+
 ```
 
 ```ts 6:6 file=./code/e2e2.ts title="E2E test - different steps"
+
 ```
 
 ```ts 11:19 file=./code/e2e2.ts title="E2E test - different steps"
+
 ```
 
 ```ts 21:40 file=./code/e2e2.ts title="E2E test - different steps"
+
 ```
 
 </CodeSurfer>
@@ -900,7 +716,7 @@ describe("Feature / E2E", () => {
 
 ---
 
-<CodeSurferColumns themes={[vsDark, vsDark]}>
+<CodeSurferColumns themes={[nightOwl, nightOwl]}>
 
 <Step title="Unit test example">
 
@@ -936,27 +752,32 @@ it("should sum numbers", function () {
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts file=./code/unit1.ts title="Unit Test - Test Example"
+
 ```
 
 ```ts 2:13 file=./code/unit1.ts title="Unit Test - Test Example"
+
 ```
 
 ```ts 5:18 file=./code/unit1.ts title="Unit Test - Test Example"
+
 ```
 
 ```ts 20:28 file=./code/unit1.ts title="Unit Test - Test Example"
+
 ```
 
 </CodeSurfer>
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```ts file=./code/unit2.ts title="Unit Test - Component Example"
+
 ```
 
 </CodeSurfer>
@@ -986,7 +807,7 @@ https://www.atlassian.com/continuous-delivery/software-testing/code-coverage
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```gherkin file=./code/bdd.feature title="BDD / Gherkin"
 
@@ -996,9 +817,10 @@ https://www.atlassian.com/continuous-delivery/software-testing/code-coverage
 
 ---
 
-<CodeSurfer theme={vsDark}>
+<CodeSurfer theme={nightOwl}>
 
 ```js file=./code/bdd.js title="Gherkin + Cypress"
+
 ```
 
 </CodeSurfer>
@@ -1019,3 +841,41 @@ https://www.atlassian.com/continuous-delivery/software-testing/code-coverage
 - https://kentcdodds.com/blog/
 - https://github.com/NoriSte/ui-testing-best-practices
 - https://noriste.github.io/reactjsday-2019-testing-course/
+
+---
+
+# Bonus Content
+
+---
+
+## Test Desiderata (1/2)
+
+- **Isolated** — tests should return the same results regardless of the order in which they are run.
+- **Composable** — if tests are isolated, then I can run 1 or 10 or 100 or 1,000,000 and get the same results.
+- **Deterministic** — if nothing changes, the test result shouldn’t change.
+- **Behavioral** — tests should be sensitive to changes in the behavior of the code under test. If the behavior changes, the test result should change.
+- **Structure-insensitive** — tests should not change their result if the structure of the code changes.
+- **Specific** — if a test fails, the cause of the failure should be obvious.
+
+https://medium.com/@kentbeck_7670/test-desiderata-94150638a4b3
+
+<Notes>
+
+- Always a tradeoff, impossibile to have all of these
+- Why isolate? Understand where is the error, re-run same test
+- Non deterministic: global state (e.g. user register), date-time (e.g. dst), concurrency, ...
+
+</Notes>
+
+---
+
+## Test Desiderata (2/2)
+
+- **Fast** — tests should run quickly.
+- **Writable** — tests should be cheap to write relative to the cost of the code being tested.
+- **Readable** — tests should be comprehensible for reader, invoking the motivation for writing this particular test.
+- **Automated** — tests should run without human intervention.
+- **Predictive** — if the tests all pass, then the code under test should be suitable for production.
+- **Inspiring** — passing the tests should inspire confidence
+
+https://medium.com/@kentbeck_7670/test-desiderata-94150638a4b3

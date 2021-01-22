@@ -1,6 +1,7 @@
 import chromeRequest from "./images/chrome-request.png";
 import force from "./images/force.gif";
 import money from "./images/money.gif";
+import smartphone from "./images/smartphone-dialog.png";
 import testCurve from "./images/test-curve.jpg";
 import pyramid1 from "./images/testing-pyramid.png";
 import testingToolsCypress from "./images/testing-tools-cypress.png";
@@ -17,5 +18,6 @@ export const images = {
   testingTools,
   testingToolsCypress,
   force,
-  chromeRequest
+  chromeRequest,
+  smartphone,
 };
