@@ -31,17 +31,17 @@ export const themes = [future, myTheme];
   consultare informazioni, percorsi e consigli di viaggio."
 </div>
 
-<div>
-  <img style={{ display: "inline-block", "margin-right": "10px" }} src={images.homepage} />
-  <img style={{ display: "inline-block", "margin-right": "10px" }} src={images.creator} />
-  <img style={{ display: "inline-block" }} src={images.itinerary} />
+<div style={{ "margin-top": "50px" }}>
+  <img style={{ display: "inline-block", "margin-right": "10px", height: "30vh" }} src={images.homepage} />
+  <img style={{ display: "inline-block", "margin-right": "10px", height: "30vh" }} src={images.creator} />
+  <img style={{ display: "inline-block", height: "30vh" }} src={images.itinerary} />
 </div>
 
 ---
 
 ## Usual Friday
 
-<img src={images.slack} />
+<img style={{ height: "60vh" }} src={images.slack} />
 
 ---
 
@@ -500,27 +500,25 @@ cy.get("table tr").should("have.length", 2);
 
 ---
 
-## Stubbing requests
-
 <CodeSurfer theme={nightOwl}>
 
-```ts file=./code/intercept.ts title="Stubbing request example"
+```ts file=./code/intercept.ts title="Stubbing request"
 
 ```
 
-```ts 2:2 file=./code/intercept.ts title="Stubbing request example" subtitle="Intercept"
+```ts 2:2 file=./code/intercept.ts title="Stubbing request" subtitle="Intercept"
 
 ```
 
-```ts 3:15 file=./code/intercept.ts title="Stubbing request example" subtitle="Switch"
+```ts 3:15 file=./code/intercept.ts title="Stubbing request" subtitle="Switch"
 
 ```
 
-```ts 7:7 file=./code/intercept.ts  title="Stubbing request example" subtitle="Fixture"
+```ts 7:7 file=./code/intercept.ts  title="Stubbing request" subtitle="Fixture"
 
 ```
 
-```ts 17:17 file=./code/intercept.ts  title="Stubbing request example" subtitle="Call API"
+```ts 17:17 file=./code/intercept.ts  title="Stubbing request" subtitle="Call API"
 
 ```
 
@@ -604,63 +602,6 @@ module.exports = (on, config) => {
 
 ---
 
-## Using task
-
-```ts
-// integration/feature/sub-feature.e2e.spec.ts
-describe("Feature / E2E", () => {
-  beforeEach(() => {
-    cy.task("cleanupDb");
-  });
-});
-```
-
----
-
-<CodeSurfer theme={nightOwl}>
-
-```ts file=./code/e2e1.ts title="E2E test - complete flow"
-
-```
-
-```ts 2:9 file=./code/e2e1.ts title="E2E test - complete flow"
-
-```
-
-```ts 11:23 file=./code/e2e1.ts title="E2E test - complete flow"
-
-```
-
-</CodeSurfer>
-
----
-
-<CodeSurfer theme={nightOwl}>
-
-```ts file=./code/e2e2.ts title="E2E test - different steps"
-
-```
-
-```ts 2:9 file=./code/e2e2.ts title="E2E test - different steps"
-
-```
-
-```ts 6:6 file=./code/e2e2.ts title="E2E test - different steps"
-
-```
-
-```ts 11:19 file=./code/e2e2.ts title="E2E test - different steps"
-
-```
-
-```ts 21:40 file=./code/e2e2.ts title="E2E test - different steps"
-
-```
-
-</CodeSurfer>
-
----
-
 # Unit tests
 
 ---
@@ -673,79 +614,15 @@ describe("Feature / E2E", () => {
 
 ---
 
-<CodeSurferColumns themes={[nightOwl, nightOwl]}>
-
-<Step title="Unit test example">
-
-```ts
-// src/calculator.ts
-export function sum(a: number, b: number): number {
-  return a + b;
-}
-```
-
-```ts
-// cypress/integration/calculator.test.ts
-import { sum } from "../../src/calculator.ts";
-
-it("should sum numbers", function () {
-  expect(sum(1, 2)).to.eq(3);
-});
-```
-
-</Step>
-
-</CodeSurferColumns>
-
----
-
-## Pure functions
-
-- Isolate the logic under test in a **pure function**
-- In application code, run side effects (e.g. HTTP calls, translations, ...) outside the function and pass the result
-  to the function (**functional core, imperative shell** pattern)
-- If not possibile (for example if you need to make an HTTP call based on a condition),
-  create a function to make the HTTP call and pass it to the pure function
-
----
-
-<CodeSurfer theme={nightOwl}>
-
-```ts file=./code/unit1.ts title="Unit Test - Test Example"
-
-```
-
-```ts 2:13 file=./code/unit1.ts title="Unit Test - Test Example"
-
-```
-
-```ts 5:18 file=./code/unit1.ts title="Unit Test - Test Example"
-
-```
-
-```ts 20:28 file=./code/unit1.ts title="Unit Test - Test Example"
-
-```
-
-</CodeSurfer>
-
----
-
-<CodeSurfer theme={nightOwl}>
-
-```ts file=./code/unit2.ts title="Unit Test - Component Example"
-
-```
-
-</CodeSurfer>
-
----
-
 ## Component Unit Testing
 
 [Testing components](https://docs.cypress.io/plugins/#component-testing) in isolation
 is an experimental feature of Cypress, we can try to use it only if we found that
 it could be really useful.
+
+---
+
+## DEMO TIME
 
 ---
 
