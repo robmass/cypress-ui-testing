@@ -1,5 +1,8 @@
 import chromeRequest from "./images/chrome-request.png";
+import creator from "./images/creator.png";
 import force from "./images/force.gif";
+import homepage from "./images/homepage.png";
+import itinerary from "./images/itinerary.png";
 import money from "./images/money.gif";
 import smartphone from "./images/smartphone-dialog.png";
 import testCurve from "./images/test-curve.jpg";
@@ -20,4 +23,7 @@ export const images = {
   force,
   chromeRequest,
   smartphone,
+  creator,
+  homepage,
+  itinerary,
 };
