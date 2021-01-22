@@ -1,14 +1,37 @@
-describe("Recipe Create / Vector", () => {
-  it("vector should not have preheat step", () => {
-    cy.server();
-    cy.route("**/recipe/recipes/{*}", "fx:recipe/vector/empty-recipe.json");
-    cy.kcFakeLogin(
-      "admin",
-      "recipeLibrary/recipes/{dbbdc937-3f19-44db-b962-90a10222b076}/create"
-    );
+it('Should show snack bar massage with incorrect credentials error message', () => {
+    cy.intercept('POST', '/api', (req) => {
+        req.alias = 'gqlMutation_TokenAuth';
+        expectBody(req.body.variables, {
+            email: 'doh@test.com',
+            password: 'doh@test.com',
+        });
+        req.reply({
+            data: {
+                tokenAuth: null,
+            },
+            errors: [
+                {
+                    message: 'Please enter valid credentials',
+                    locations: [
+                        {
+                            line: 2,
+                            column: 3,
+                        },
+                    ],
+                    path: ['tokenAuth'],
+                },
+            ],
+        });
+    });
 
-    cy.findByText(/add instruction/i, { selector: "button" }).click();
+    cy.findByLabelText(/email/i).type('doh@test.com');
+    cy.findByLabelText(/password/i).type('doh@test.com');
 
-    cy.findByText(/preheat/).should("not.exist");
-  });
+    cy.get('button')
+        .findByText(/accedi/i)
+        .click();
+
+    cy.wait('@gqlMutation_TokenAuth');
+
+    cy.findByText('Please enter valid credentials').should('exist');
 });
