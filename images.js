@@ -4,6 +4,7 @@ import force from "./images/force.gif";
 import homepage from "./images/homepage.png";
 import itinerary from "./images/itinerary.png";
 import money from "./images/money.gif";
+import slack from "./images/slack.png";
 import smartphone from "./images/smartphone-dialog.png";
 import testCurve from "./images/test-curve.jpg";
 import pyramid1 from "./images/testing-pyramid.png";
@@ -26,4 +27,5 @@ export const images = {
   creator,
   homepage,
   itinerary,
+  slack,
 };
