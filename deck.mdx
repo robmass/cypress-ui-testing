@@ -6,10 +6,13 @@ import { images } from "./images";
 import { future, prism } from "mdx-deck/themes";
 import myTheme from "./theme";
 import "prismjs/components/prism-gherkin";
+import CenterElement from "./layout/center-element.js";
 
 export const themes = [future, myTheme];
 
-# UI Testing
+## UI Testing Real Life Experience
+
+<img style={{ height: "60vh" }} src={images.uiTesting} />
 
 Marco Scapoli, Roberto Massimini
 
@@ -141,7 +144,9 @@ Usually in a frontend application we mean mocking the backend APIs
 
 ---
 
-<img src={images.unitIntegration} style={{ height: "80vh" }} />
+<CenterElement>
+  <img src={images.unitIntegration} style={{ height: "60vh" }} />
+</CenterElement>
 
 ---
 
@@ -161,7 +166,9 @@ https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html
 
 ## Testing Trophy
 
-<img src={images.pyramid2} style={{ height: "70vh" }} />
+<CenterElement>
+  <img src={images.pyramid2} style={{ height: "70vh" }} />
+</CenterElement>
 
 https://kentcdodds.com/blog/write-tests
 
@@ -457,6 +464,8 @@ Useful if the code is reused a lot in our tests and it is more comfortable to us
 
 ✅ Best Practice: Use route aliases or assertions to guard Cypress from proceeding until an explicit condition is met.
 
+Check also [Cypress Wait Until Plugin](https://github.com/NoriSte/cypress-wait-until)
+
 ---
 
 <CodeSurfer theme={nightOwl}>
@@ -624,7 +633,9 @@ it could be really useful.
 
 ---
 
-## DEMO TIME
+<CenterElement>
+  <img style={{ height: "50vh" }} src={images.demotime} />
+</CenterElement>
 
 ---
 
@@ -636,12 +647,25 @@ it could be really useful.
 
 ## Links
 
+- https://github.com/NoriSte/ui-testing-best-practices
+- https://noriste.github.io/reactjsday-2019-testing-course/
+- https://www.facebook.com/1678427052369994/videos/2312725798938924/
 - https://testingjavascript.com/
 - https://github.com/goldbergyoni/javascript-testing-best-practices
 - https://glebbahmutov.com/blog/
 - https://kentcdodds.com/blog/
-- https://github.com/NoriSte/ui-testing-best-practices
-- https://noriste.github.io/reactjsday-2019-testing-course/
+
+---
+
+<CenterElement>
+  <img style={{ height: "50vh" }} src={images.questions} />
+</CenterElement>
+
+---
+
+<CenterElement>
+  <img style={{ height: "50vh" }} src={images.thankyou} />
+</CenterElement>
 
 ---
 
