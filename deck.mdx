@@ -16,6 +16,12 @@ export const themes = [future, myTheme];
 
 Marco Scapoli, Roberto Massimini
 
+<Notes>
+
+- Marco
+
+</Notes>
+
 ---
 
 ## Agenda
@@ -27,9 +33,15 @@ Marco Scapoli, Roberto Massimini
 1. E2E tests
 1. Unit tests
 
+<Notes>
+
+- Marco
+
+</Notes>
+
 ---
 
-# Crushtravel
+## Crushtravel
 
 <div>
   "Crush Travels S.r.l. mette a disposizione degli utenti un servizio che consente di partecipare alla Community, condividere, pubblicare e
@@ -41,19 +53,30 @@ Marco Scapoli, Roberto Massimini
   <img style={{ display: "inline-block", "margin-right": "10px", height: "30vh" }} src={images.creator} />
   <img style={{ display: "inline-block", height: "30vh" }} src={images.itinerary} />
 </div>
+<Notes>
+
+- Marco
+
+</Notes>
 
 ---
 
 ## Usual Friday
 
 <img style={{ height: "60vh" }} src={images.slack} />
+<Notes>
+
+- Marco
+
+</Notes>
 
 ---
 
-# Testing Theory
+## Testing Theory
 
 <Notes>
 
+- Roberto
 - Evaluate Pros/cons
 
 </Notes>
@@ -74,6 +97,7 @@ Marco Scapoli, Roberto Massimini
 
 <Notes>
 
+- Roberto
 - Documentation: new developers can easily play with the code
 - Example: long procedure to reach desided state
 
@@ -84,6 +108,12 @@ Marco Scapoli, Roberto Massimini
 ## Test Types: End To End (E2E)
 
 Test the whole application (frontend + backend) like a user (usually from the browser)
+
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -96,6 +126,12 @@ Test the whole application (frontend + backend) like a user (usually from the br
 - ❌ Less **specific**
 - ❌ No **TDD**
 
+<Notes>
+
+- Roberto
+
+</Notes>
+
 ---
 
 ## Test Types: Unit tests
@@ -105,6 +141,8 @@ Test a **unit** of our code in **isolation** from the rest.
 What is a unit?! 🤔
 
 <Notes>
+
+- Roberto
 
 Different units: classes, functions, components
 
@@ -122,6 +160,12 @@ Different units: classes, functions, components
 - ❌ Tied to the **code structure**
 - ❌ Often require to **mock** a lot of things
 
+<Notes>
+
+- Roberto
+
+</Notes>
+
 ---
 
 ## Test Types: Integration tests
@@ -129,6 +173,12 @@ Different units: classes, functions, components
 Test a group of units and tests their behavior as a whole.
 
 Usually in a frontend application we mean mocking the backend APIs
+
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -142,11 +192,22 @@ Usually in a frontend application we mean mocking the backend APIs
 - **Faster** than E2E tests, but **slower** than Unit tests
 - Less **specific** than Unit tests, but more specific than E2E tests
 
+<Notes>
+
+- Roberto
+
+</Notes>
+
 ---
 
 <CenterElement>
   <img src={images.unitIntegration} style={{ height: "60vh" }} />
 </CenterElement>
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -161,6 +222,16 @@ https://martinfowler.com/bliki/TestPyramid.html
 https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html
 
 </small>
+<Notes>
+
+- Roberto
+- As you move up the pyramid the tests get slower to write/run and more expensive (in terms of time and resources) to run/maintain.
+  It's meant to indicate that you should spend more of your time on unit tests due to these factors
+- As you move up the pyramid, the confidence quotient of each form of testing increases
+- Assunzione di fowler: la piramide è basata su assunzione che i test sull'intero stack sono costosi e lenti.
+  Se fossero veloci, affidabili e convenienti da modificare, i test a basso livello non servirebbero
+
+</Notes>
 
 ---
 
@@ -174,15 +245,24 @@ https://kentcdodds.com/blog/write-tests
 
 <Notes>
 
-- E2E: Happy path
+- Roberto
+- su assunzione, Doods ha teorizzato questo schema ( Vince Lombardi Trophy), visto che ora i tools sono fantastici e veloci
+- E2E: Happy path (pochi test e2e viste le differenze di tempi di esecuzione)
 - Integration: corner cases
 - Unit: Businnes logic
+- Static: eslint, tslint
 
 </Notes>
 
 ---
 
-# Testing tools / Cypress
+## Testing tools / Cypress
+
+<Notes>
+
+- Marco
+
+</Notes>
 
 ---
 
@@ -195,6 +275,12 @@ https://kentcdodds.com/blog/write-tests
 - ❌ Not crossbrowser (only Chrome, Edge and Firefox)
 - ❌ Some important issues not yet resolved
 - ❌ Some features are difficult to set up (Typescript, code coverage)
+
+<Notes>
+
+- Marco
+
+</Notes>
 
 ---
 
@@ -209,6 +295,12 @@ https://kentcdodds.com/blog/write-tests
 └── cypress.json  <------ Cypress configuration
 ```
 
+<Notes>
+
+- Marco
+
+</Notes>
+
 ---
 
 ## Configure Cypress
@@ -220,6 +312,12 @@ https://kentcdodds.com/blog/write-tests
   "integrationFolder": "cypress/tests"
 }
 ```
+
+<Notes>
+
+- Marco
+
+</Notes>
 
 ---
 
@@ -235,6 +333,12 @@ https://kentcdodds.com/blog/write-tests
     }
 }
 ```
+
+<Notes>
+
+- Marco
+
+</Notes>
 
 ---
 
@@ -258,6 +362,12 @@ https://kentcdodds.com/blog/write-tests
 
 </CodeSurfer>
 
+<Notes>
+
+- Marco
+
+</Notes>
+
 ---
 
 ## Chains of commands
@@ -270,6 +380,8 @@ https://kentcdodds.com/blog/write-tests
 - Asynchronous (~ Promises) with automatic waiting
 
 <Notes>
+
+- Marco
 
 Focus on automatic waiting and retryability
 
@@ -306,6 +418,8 @@ cy.get("tbody tr:first").should(($tr) => {
 
 <Notes>
 
+- Marco
+
 Focus on retryability of should command
 
 </Notes>
@@ -320,6 +434,15 @@ Focus on retryability of should command
    - `cy.contains` from Cypress
 2. If not possible, use `cy.findByTestId` from Cypress Testing Library
 3. If not possible, use CSS selectors
+
+<Notes>
+
+- Roberto
+- testare dal punto di vista del consumatore
+- recuperare gli elementi dalla pagina tramite i contenuti della pagina (il più possibile), per avere dei test vicini al comportamento dell'utente
+- gli attrivuti sono cose che solo lo sviluppatore conosce, i test scritti con l'ottica dello sviluppatore sono test più fragili
+
+</Notes>
 
 ---
 
@@ -398,6 +521,12 @@ cy.get(".modal-body");
 
 </CodeSurferColumns>
 
+<Notes>
+
+- Roberto
+
+</Notes>
+
 ---
 
 <CodeSurfer theme={nightOwl}>
@@ -413,6 +542,11 @@ cy.get(MODAL_BODY_CLASS);
 ```
 
 </CodeSurfer>
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -433,6 +567,11 @@ fillUsername("bender");
 ```
 
 </CodeSurfer>
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -455,6 +594,11 @@ Useful if the code is reused a lot in our tests and it is more comfortable to us
 ```
 
 </CodeSurfer>
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -465,6 +609,13 @@ Useful if the code is reused a lot in our tests and it is more comfortable to us
 ✅ Best Practice: Use route aliases or assertions to guard Cypress from proceeding until an explicit condition is met.
 
 Check also [Cypress Wait Until Plugin](https://github.com/NoriSte/cypress-wait-until)
+
+<Notes>
+
+- Roberto
+- wait-until utile per fare wait in attesa di elementi finchè non vengono mostrati
+
+</Notes>
 
 ---
 
@@ -489,6 +640,11 @@ cy.get("table tr").should("have.length", 2);
 ```
 
 </CodeSurfer>
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -498,9 +654,21 @@ cy.get("table tr").should("have.length", 2);
 
 ✅ Best Practice: Clean up state before tests run.
 
+<Notes>
+
+- Roberto
+
+</Notes>
+
 ---
 
-# Integration tests
+## Integration tests
+
+<Notes>
+
+- Marco
+
+</Notes>
 
 ---
 
@@ -508,6 +676,13 @@ cy.get("table tr").should("have.length", 2);
 
 - [Stub network requests](https://docs.cypress.io/guides/guides/network-requests.html) to backend APIs and Keycloak.
 - Test are completely indipendent from external resources, they are fast and we can easily test edge cases
+
+<Notes>
+
+- Marco
+- stubbare e controllare il BE è la cosa più importante nella scrittura di test di integrazione
+
+</Notes>
 
 ---
 
@@ -534,6 +709,11 @@ cy.get("table tr").should("have.length", 2);
 ```
 
 </CodeSurfer>
+<Notes>
+
+- Marco
+
+</Notes>
 
 ---
 
@@ -572,8 +752,21 @@ cy.get("table tr").should("have.length", 2);
 ```
 
 </CodeSurfer>
+<Notes>
 
-# E2E tests
+- Marco
+
+</Notes>
+
+---
+
+## E2E tests
+
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -582,6 +775,12 @@ cy.get("table tr").should("have.length", 2);
 - Test the whole system (frontend, backend, DB, ...)
 - Mock only external parts (e.g. SMTP Server, Devices, External APIs...)
 - Need the possiblity to have a clean state before tests execution
+
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -593,8 +792,15 @@ There are many ways, depending on the project. Examples:
   - Setup a clean environment (even a local one with `docker-compose`)
   - Script for put the DB in a clean state before each test
 - If not possible, E2E tests can be run on the **deployed version** on the dev environment
+
   - Have a way to have a clean state before each test
   - e.g. in a multi-tenant application have a "Test" tenant and delete all linked records before each test
+
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -611,9 +817,21 @@ module.exports = (on, config) => {
 }
 ```
 
+<Notes>
+
+- Roberto
+
+</Notes>
+
 ---
 
-# Unit tests
+## Unit tests
+
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -623,6 +841,12 @@ module.exports = (on, config) => {
 - For testing **complex business logic** in a more convenient way, or for logic that cannot be tested in another way (e.g. charts)
 - For testing **shared components** that are indipendent from services
 
+<Notes>
+
+- Roberto
+
+</Notes>
+
 ---
 
 ## Component Unit Testing
@@ -631,17 +855,42 @@ module.exports = (on, config) => {
 is an experimental feature of Cypress, we can try to use it only if we found that
 it could be really useful.
 
+<Notes>
+
+- Roberto
+
+</Notes>
+
 ---
 
 <CenterElement>
   <img style={{ height: "50vh" }} src={images.demotime} />
 </CenterElement>
 
+<Notes>
+
+- Marco
+- Show start command and cypress dashboard
+- Integration test: user registration
+- E2E test: login
+- Maybe show the differences on the code for the intercept command
+
+- Roberto
+- Show gitlab pipeline with a failed case, showing the snapshot created by the pipeline
+
+</Notes>
+
 ---
 
 > “Unit testing is a lot like going to the gym”
 
 – [A random guy on Stackoverflow](https://stackoverflow.com/a/69263/9891450)
+
+<Notes>
+
+- Roberto
+
+</Notes>
 
 ---
 
@@ -655,11 +904,23 @@ it could be really useful.
 - https://glebbahmutov.com/blog/
 - https://kentcdodds.com/blog/
 
+<Notes>
+
+- Roberto
+
+</Notes>
+
 ---
 
 <CenterElement>
   <img style={{ height: "50vh" }} src={images.questions} />
 </CenterElement>
+
+<Notes>
+
+- Marco & Roberto
+
+</Notes>
 
 ---
 
@@ -667,9 +928,15 @@ it could be really useful.
   <img style={{ height: "50vh" }} src={images.thankyou} />
 </CenterElement>
 
+<Notes>
+
+- Marco & Roberto
+
+</Notes>
+
 ---
 
-# Bonus Content
+## Bonus Content
 
 ---
 
