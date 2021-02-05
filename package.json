@@ -6,7 +6,7 @@
   "scripts": {
     "start": "mdx-deck deck.mdx",
     "build": "mdx-deck build deck.mdx && node ./replace-paths.js",
-    "print": "npx website-pdf http://localhost:8000/print -o ui-testing.pdf"
+    "print": "npx website-pdf http://localhost:8000/print -o testing.pdf"
   },
   "author": "",
   "license": "ISC",

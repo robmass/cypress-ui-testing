@@ -271,7 +271,7 @@ https://kentcdodds.com/blog/write-tests
 - ✅ Great documentation
 - ✅ Great ecosystem (guides, plugins, resources)
 - ❌ Not crossbrowser (only Chrome, Edge and Firefox)
-- ❌ Some important issues not yet resolved ([*Cypress Known Issues](https://docs-staging.cypress.io/guides/appendices/known-issues.html#))
+- ❌ Some important issues not yet resolved ([\*Cypress Known Issues](https://docs-staging.cypress.io/guides/appendices/known-issues.html#))
 - ❌ Some features are difficult to set up (Typescript, code coverage)
 
 <Notes>
@@ -346,13 +346,31 @@ https://kentcdodds.com/blog/write-tests
 
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts 3:3 file=./code/test-structure.ts subtitle="grouping a suite of tests 👨‍👩‍👧‍👦"
 
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts 4:18 file=./code/test-structure.ts subtitle="hooks 🪝"
 
 ```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
 
 ```ts 20:30 file=./code/test-structure.ts subtitle="tests and test "specifications" 📝"
 
@@ -393,17 +411,41 @@ Focus on automatic waiting and retryability
 cy.get("button").click().should("have.class", "active");
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts title="Assertions" subtitle="Negative Assertion on an element 👎"
 cy.get("#modal").should("not.exist");
 ```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
 
 ```ts title="Assertions" subtitle="Multiple Assertions on an element 👐"
 cy.get("#header a").should("have.class", "active").and("have.attr", "href", "/users");
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts title="Assertions" subtitle="Single assertion on an object ☝️"
 cy.request("/users/1").its("body").should("deep.eq", { name: "Jane" });
 ```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
 
 ```ts title="Assertions" subtitle="Explicit form ✍️"
 cy.get("tbody tr:first").should(($tr) => {
@@ -463,6 +505,12 @@ cy.findByLabelText(/username/i);
 
 </Step>
 
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[nightOwl, nightOwl]}>
+
 <Step subtitle="findByTitle">
 
 ```html
@@ -481,6 +529,12 @@ cy.findByTitle(/delete/i);
 
 </Step>
 
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[nightOwl, nightOwl]}>
+
 <Step subtitle="findByTestId">
 
 ```html
@@ -498,6 +552,12 @@ cy.findByTestId("chart-container");
 ```
 
 </Step>
+
+</CodeSurferColumns>
+
+---
+
+<CodeSurferColumns themes={[nightOwl, nightOwl]}>
 
 <Step subtitle="CSS selector">
 
@@ -587,6 +647,12 @@ Useful if the code is reused a lot in our tests and it is more comfortable to us
 
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts 3:7 file=./code/cypress-commands.ts subtitle="Accept dialog command"
 
 ```
@@ -624,6 +690,12 @@ cy.get("#fetch").click();
 cy.wait(4000); // <--- this is unnecessary
 cy.get("table tr").should("have.length", 2);
 ```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
 
 ```ts
 cy.intercept("POST", "/api", (req) => {
@@ -690,17 +762,41 @@ cy.get("table tr").should("have.length", 2);
 
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts 2:2 file=./code/intercept.ts title="Stubbing request" subtitle="intercept 🪤"
 
 ```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
 
 ```ts 3:15 file=./code/intercept.ts title="Stubbing request" subtitle="recognizing different requests"
 
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts 7:7 file=./code/intercept.ts  title="Stubbing request" subtitle="providing static datas 📝"
 
 ```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
 
 ```ts 17:17 file=./code/intercept.ts  title="Stubbing request" subtitle="can also reply with a real response "
 
@@ -721,29 +817,71 @@ cy.get("table tr").should("have.length", 2);
 
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts 2:25 file=./code/integration1.ts title="Integration test example" subtitle="intercept block 🛰"
 
 ```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
 
 ```ts 4:7 file=./code/integration1.ts title="Integration test example" subtitle="expectBody check 🔍"
 
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts 8:24 file=./code/integration1.ts title="Integration test example" subtitle="directly provide the response object"
 
 ```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
 
 ```ts 27:28 file=./code/integration1.ts  title="Integration test example" subtitle="Cypress in action! 💪"
 
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts 30:32 file=./code/integration1.ts  title="Integration test example" subtitle="clicking the button 👇"
 
 ```
 
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
+
 ```ts 34:34 file=./code/integration1.ts  title="Integration test example" subtitle="...waiting for the aliased resource ⏱"
 
 ```
+
+</CodeSurfer>
+
+---
+
+<CodeSurfer theme={nightOwl}>
 
 ```ts 36:36 file=./code/integration1.ts  title="Integration test example" subtitle="Final check 🏁"
 
